@@ -1,4 +1,4 @@
-public class RotatedSortedArray {
+public class MinElementInRotatedSortedArray {
 
     public static void main(String[] args) {
         int[] case1 = new int[]{60,70,80,90,10,20,30,40,50};
