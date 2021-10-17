@@ -18,9 +18,9 @@ public class RotatedSortedArray {
         while (leftPointer < rightPointer) {
             int mid = (leftPointer + rightPointer) / 2;
 
-            if (arr[mid] < arr[mid-1]) {
+            if (arr[mid] < arr[mid-1]) { // means mid-index is pointing to the smallest element
                 return arr[mid];
-            } else if (arr[mid] > arr[mid+1]) {
+            } else if (arr[mid] > arr[mid+1]) { // means next index of the mid has the smallest element
                 return arr[mid+1];
             } else if (arr[mid] >= arr[rightPointer]) { // means right side sub-array has the smallest element
                 leftPointer = mid + 1;
