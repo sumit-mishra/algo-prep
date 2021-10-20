@@ -7,10 +7,10 @@ public class LengthOfLongestUniqueSubstring {
      */
     public static void main(String[] args) {
         final String case1 = "abcabcdabcde";
-        System.out.println(getMaxLengthOfTheUniqueSubstring(case1));
+        System.out.println(getMaxLengthOfTheUniqueSubstring2(case1));
 
         final String case2 = "abbcbcxa";
-        System.out.println(getMaxLengthOfTheUniqueSubstring(case2));
+        System.out.println(getMaxLengthOfTheUniqueSubstring2(case2));
     }
 
     private static int getMaxLengthOfTheUniqueSubstring(String input) {
@@ -38,6 +38,26 @@ public class LengthOfLongestUniqueSubstring {
                leftPointer += 1;
            }
         }
+        return maxSoFar;
+    }
+
+    //solution 2 -- better solution
+    private static int getMaxLengthOfTheUniqueSubstring2(String input) {
+        int maxSoFar = 0, currentMax = 0;
+        boolean[] uniqueChars = new boolean[128];
+
+        for (int i = 0; i < input.length(); i++) {
+            if (uniqueChars[input.charAt(i)]) {
+                maxSoFar = Math.max(maxSoFar, currentMax);
+                uniqueChars = new boolean[128];
+                currentMax = 1;
+                uniqueChars[input.charAt(i)] = true;
+            } else {
+                currentMax += 1;
+                uniqueChars[input.charAt(i)] = true;
+            }
+        }
+        maxSoFar = Math.max(currentMax, maxSoFar);
         return maxSoFar;
     }
 
